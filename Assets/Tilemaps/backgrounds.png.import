@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/light-green-ground.png-7a6611a46c66d62586b8f14dadc7e7b2.stex"
+path="res://.import/backgrounds.png-ad38a15d981a0f45b93f7489cb16d7ba.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilemaps/light-green-ground.png"
-dest_files=[ "res://.import/light-green-ground.png-7a6611a46c66d62586b8f14dadc7e7b2.stex" ]
+source_file="res://Assets/Tilemaps/backgrounds.png"
+dest_files=[ "res://.import/backgrounds.png-ad38a15d981a0f45b93f7489cb16d7ba.stex" ]
 
 [params]
 

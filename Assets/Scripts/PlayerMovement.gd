@@ -89,12 +89,14 @@ func _physics_process(delta):
 	if jump_timer >= jump_time:
 		jump_delay = false
 		jump_timer = 0
+		
 	#Jump with variable height
 	if is_on_floor() and not dashing:
 		if jump_timer > 0:
 			_jump(jump_force)
 	elif jump_stop and velocity.y < 0 and not wall_jumped and not dashing:
 		velocity.y *= 0.5
+		
 	#Wall Jump
 	if on_wall and not dashing and not is_on_floor():
 		if jump:
@@ -110,8 +112,8 @@ func _physics_process(delta):
 	#Dash Logic
 	if dash and not has_dash:
 		_dash()
+		_ripple()
 		Input.start_joy_vibration(0.5,0.5,0.2)
-		$Ripple.visible = true
 		
 	# Flip Logic
 	if facing_right and walk_left and not walk_right:
@@ -121,8 +123,7 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity, Vector2(0,-1))
 	
-#-------------------------------------------------------------------------
-
+#------------------------------------------------------------------------
 #functions
 func _flip():
 	facing_right = not facing_right
@@ -165,16 +166,23 @@ func _dash():
 	$dash_time.start()
 	$spawner_timer.start()
 
+func _ripple():
+	var ripple_scene = load("res://Assets/Scenes/VisualComponents/RippleEffect.tscn").instance()
+	#var ripple = ripple_scene
+	get_parent().add_child(ripple_scene)
+	ripple_scene.position = position
+
+#-----------------------------------------------------------------------------
+#Connects
 func _on_dash_time_timeout() -> void:
 	dashing = false
 	speed_dash = 800
 	velocity = Vector2.ZERO
 	Input.stop_joy_vibration(0)
 	$spawner_timer.stop()
-	$Ripple.visible = false
 
 func _on_spawner_timer_timeout() -> void:
-	var shadow = load("res://Assets/Scenes/Shadow.tscn").instance()
+	var shadow = load("res://Assets/Scenes/PreFabs/Shadow.tscn").instance()
 	get_parent().add_child(shadow)
 	shadow.position = position
 	if facing_right:

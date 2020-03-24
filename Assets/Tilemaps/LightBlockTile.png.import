@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/black_ground.png-29b67c05de4f448ab26ece654b78cbe7.stex"
+path="res://.import/LightBlockTile.png-6ea742669a24516956d367771390a011.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilemaps/black_ground.png"
-dest_files=[ "res://.import/black_ground.png-29b67c05de4f448ab26ece654b78cbe7.stex" ]
+source_file="res://Assets/Tilemaps/LightBlockTile.png"
+dest_files=[ "res://.import/LightBlockTile.png-6ea742669a24516956d367771390a011.stex" ]
 
 [params]
 

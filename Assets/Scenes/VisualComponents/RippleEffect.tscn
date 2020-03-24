@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Materials/RippleMaterial.tres" type="Material" id=2]
+[ext_resource path="res://Assets/Scripts/RipleEffect.gd" type="Script" id=3]
+
+[node name="RipleEffect" type="Sprite"]
+material = ExtResource( 2 )
+scale = Vector2( 640, 360 )
+z_index = 5
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

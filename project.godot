@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Dee The Dark Light"
-run/main_scene="res://Assets/Scenes/Level_Test.tscn"
+run/main_scene="res://Assets/Scenes/Levels/Level_Test.tscn"
 config/icon="res://icon.png"
 
 [display]
