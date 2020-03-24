@@ -1,0 +1,71 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=2]
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=1]
+uniform_name = "TextureUniform"
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeInput" id=2]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeColorUniform" id=3]
+uniform_name = "ColorUniform"
+
+[sub_resource type="VisualShader" id=4]
+code = "shader_type canvas_item;
+uniform vec4 ColorUniform : hint_color;
+uniform sampler2D TextureUniform : hint_albedo;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:7
+	vec3 n_out7p0;
+	float n_out7p1;
+	n_out7p0 = ColorUniform.rgb;
+	n_out7p1 = ColorUniform.a;
+
+// Input:6
+	vec3 n_out6p0;
+	n_out6p0 = vec3(UV,0.0);
+
+// TextureUniform:2
+	vec3 n_out2p0;
+	float n_out2p1;
+	{
+		vec4 n_tex_read = texture( TextureUniform , n_out6p0.xy );
+		n_out2p0 = n_tex_read.rgb;
+		n_out2p1 = n_tex_read.a;
+	}
+
+// Output:0
+	COLOR.rgb = n_out7p0;
+	COLOR.a = n_out2p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( 106, 164 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 940, 320 )
+nodes/fragment/2/node = SubResource( 1 )
+nodes/fragment/2/position = Vector2( 660, 380 )
+nodes/fragment/6/node = SubResource( 2 )
+nodes/fragment/6/position = Vector2( 440, 300 )
+nodes/fragment/7/node = SubResource( 3 )
+nodes/fragment/7/position = Vector2( 660, 220 )
+nodes/fragment/connections = PoolIntArray( 6, 0, 2, 0, 2, 1, 0, 1, 7, 0, 0, 0 )
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+shader_param/ColorUniform = Color( 0.168627, 0.168627, 0.168627, 1 )
